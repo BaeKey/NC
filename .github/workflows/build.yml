@@ -15,10 +15,10 @@ jobs:
           vcpkg install unicorn:x86-windows-static
 
       - name: Clone source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
+        uses: microsoft/setup-msbuild@v2
 
       - name: Build project
         run: |
@@ -26,7 +26,7 @@ jobs:
           msbuild navicat-keygen.sln /p:Configuration=Release /p:Platform=x86
       
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: navicat-keygen-x86.zip
           path: bin/x86-Release/*.exe
@@ -44,10 +44,10 @@ jobs:
           vcpkg install unicorn:x64-windows-static
 
       - name: Clone source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
+        uses: microsoft/setup-msbuild@v2
 
       - name: Build project
         run: |
@@ -55,7 +55,7 @@ jobs:
           msbuild navicat-keygen.sln /p:Configuration=Release /p:Platform=x64
       
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: navicat-keygen-x64.zip
           path: bin/x64-Release/*.exe
