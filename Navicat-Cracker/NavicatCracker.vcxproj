@@ -92,7 +92,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)\bin\$(PlatformTarget)-$(Configuration)\New</OutDir>
+    <OutDir>$(SolutionDir)\bin\$(PlatformTarget)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\obj\$(PlatformTarget)-$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
