@@ -1,5 +1,13 @@
-name: navicat-keygen builds
-on: [push]
+name: navicat-cracker builds
+on: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+      tags:
+        description: 'run actions'
 
 jobs:
   navicat-keygen-x86:
