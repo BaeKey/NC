@@ -1,47 +1,9 @@
-name: navicat-cracker builds
-on: 
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'warning'
-      tags:
-        description: 'run actions'
+name: navicat-keygen builds
+on: [push,workflow_dispatch]
 
 jobs:
-  navicat-keygen-x86:
-    runs-on: windows-latest
-    #if: "startsWith(github.event.head_commit.message, '[build]')"
-    steps:
-      - name: Install dependencies
-        run: |
-          vcpkg install fmt:x86-windows-static
-          vcpkg install openssl:x86-windows-static
-          vcpkg install rapidjson:x86-windows-static
-          vcpkg install keystone:x86-windows-static
-          vcpkg install unicorn:x86-windows-static
-
-      - name: Clone source
-        uses: actions/checkout@v4
-
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v2
-
-      - name: Build project
-        run: |
-          vcpkg integrate install
-          msbuild navicat-keygen.sln /p:Configuration=Release /p:Platform=x86
-      
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: navicat-keygen-x86.zip
-          path: bin/x86-Release/*.exe
-
   navicat-keygen-x64:
     runs-on: windows-latest
-    if: "startsWith(github.event.head_commit.message, '[build]')"
     steps:
       - name: Install dependencies
         run: |
@@ -56,14 +18,22 @@ jobs:
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v2
+        with:
+          msbuild-architecture: x64
 
       - name: Build project
         run: |
           vcpkg integrate install
           msbuild navicat-keygen.sln /p:Configuration=Release /p:Platform=x64
-      
+
+      - name: Create zip package
+        shell: pwsh
+        run: Compress-Archive -Path bin/x64-Release/*.exe -DestinationPath navicat-keygen-x64.zip
+  
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: navicat-keygen-x64.zip
-          path: bin/x64-Release/*.exe
+          tag_name: latest
+          files: navicat-keygen-x64.zip
