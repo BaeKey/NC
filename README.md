@@ -1,6 +1,36 @@
-![screenshot](doc/screenshot.png)
+# ✨官方下载链接
+
+访问如下链接一般下载到的是当前大版本号下的最新版本
+
+## Navicat Premium 15
+
+```
+# Windows
+https://download.navicat.com/download/navicat150_premium_cs_x64.exe
+```
+
+## Navicat Premium 16
+
+```
+# Windows
+https://download.navicat.com/download/navicat160_premium_cs_x64.exe
+```
+
+根据规律不难得出16.x版本下载链接
+
+```
+# Windows 16.1.x
+https://download.navicat.com/download/navicat161_premium_cs_x64.exe
+# Windows 16.2.x
+https://download.navicat.com/download/navicat162_premium_cs_x64.exe
+# Windows 16.3.x
+https://download.navicat.com/download/navicat163_premium_cs_x64.exe
+```
 
 ------------------
+
+![screenshot](doc/screenshot.png)
+
 # navicat-keygen
 
 [中文版README](README.zh-CN.md)
